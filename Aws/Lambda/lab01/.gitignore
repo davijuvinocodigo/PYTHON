@@ -1,0 +1,26 @@
+# Arquivos gerados automaticamente
+/__pycache__/*
+*.pyc
+*.pyo
+*.pyi
+
+# Ambiente virtual
+/venv/*
+/virtualenv/*
+/.venv/*
+/.python-poetry/virtualenvs/*
+
+# Arquivos de log
+*.log
+
+# Outros arquivos
+*.egg-info/*
+*.egg/*
+*.swp
+*.DS_Store
+
+# Arquivos de configuração
+config.ini
+config.cfg
+.env
+settings.py
