@@ -3,7 +3,10 @@
   "app_name": "lambda-rest-chalice",
   "stages": {
     "dev": {
-      "api_gateway_stage": "api"
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "BUCKET_NAME": "dev-bucket-lab01"
+      }
     }
   }
 }
