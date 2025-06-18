@@ -1,9 +1,29 @@
 {
   "version": "2.0",
-  "app_name": "lambda-s3-chalice",
+  "app_name": "belisco-cripto-milionario",
   "stages": {
     "dev": {
-      "api_gateway_stage": "api"
+      "api_gateway_stage": "dev",
+      "environment_variables": {
+        "BUCKET_NAME": "dev-bucket-lab01"
+      },
+      "iam_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:PutObject",
+              "s3:ListBucket",
+              "s3:PutObjectAcl"
+            ],
+            "Resource": [
+              "arn:aws:s3:::dev-bucket-lab01",
+              "arn:aws:s3:::dev-bucket-lab01/*"
+            ]
+          }
+        ]
+      }
     }
   }
 }

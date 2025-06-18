@@ -1,16 +1,49 @@
-import os
-
 from chalice import Chalice
+import boto3
+import requests
+import json
+from datetime import datetime
 
-app = Chalice(app_name='lambda-s3-chalice')
-app.debug = True
+app = Chalice(app_name='api-to-s3-lambda')
 
+# Configurações
+S3_BUCKET = 'dev-bucket-lab01'
+API_URL = 'https://api.mercadobitcoin.net/api/v4/XLM/networks'
 
-# Set the value of APP_BUCKET_NAME in the .chalice/config.json file.
-S3_BUCKET = os.environ.get('APP_BUCKET_NAME', '')
-
-
-@app.on_s3_event(bucket=S3_BUCKET, events=['s3:ObjectCreated:*'])
-def s3_handler(event):
-    app.log.debug("Received event for bucket: %s, key: %s",
-                  event.bucket, event.key)
+@app.lambda_function()
+def api_to_s3(event, context):
+    try:
+        # 1. Fazer requisição para a API
+        response = requests.get(API_URL)
+        response.raise_for_status()  # Levanta exceção para erros HTTP
+        
+        data = response.json()
+        
+        # 2. Criar nome único para o arquivo no S3
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        s3_key = f'api-data/{timestamp}.json'
+        
+        # 3. Conectar ao S3 e fazer upload do arquivo
+        s3 = boto3.client('s3')
+        s3.put_object(
+            Bucket=S3_BUCKET,
+            Key=s3_key,
+            Body=json.dumps(data),
+            ContentType='application/json'
+        )
+        
+        return {
+            'statusCode': 200,
+            'body': f'Dados da API salvos com sucesso em s3://{S3_BUCKET}/{s3_key}'
+        }
+    
+    except requests.exceptions.RequestException as e:
+        return {
+            'statusCode': 500,
+            'body': f'Erro ao acessar a API: {str(e)}'
+        }
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': f'Erro inesperado: {str(e)}'
+        }

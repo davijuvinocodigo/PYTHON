@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./chalice-lambdas/lambda_functions"
+        "./chalice-lambdas/lambda_functions",
+        "./lambda-rest-chalice/lambda_functions"
     ]
 }

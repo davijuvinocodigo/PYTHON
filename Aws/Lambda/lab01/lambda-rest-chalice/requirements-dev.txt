@@ -1,2 +1,4 @@
-chalice==1.32.0
+chalice
 pytest
+requests>=2.25.1
+boto3>=1.17.0
