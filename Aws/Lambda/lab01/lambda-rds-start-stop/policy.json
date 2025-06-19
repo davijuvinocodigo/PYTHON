@@ -1,0 +1,30 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "rds:StartDBInstance",
+          "rds:StopDBInstance",
+          "rds:DescribeDBInstances"
+        ],
+        "Resource": [
+          "arn:aws:rds:${aws:region}:${aws:accountId}:db:${env:RDS_INSTANCE_ID}"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "rds:ListTagsForResource",
+          "rds:AddTagsToResource",
+          "rds:DescribeDBClusterSnapshots"
+        ],
+        "Resource": [
+          "arn:aws:rds:${aws:region}:${aws:accountId}:db:${env:RDS_INSTANCE_ID}"
+        ]
+      }
+    ]
+  }

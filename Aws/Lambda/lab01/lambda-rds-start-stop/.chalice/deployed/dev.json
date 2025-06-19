@@ -1,0 +1,32 @@
+{
+  "resources": [
+    {
+      "name": "default-role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::813270451170:role/lambda-rds-start-stop-dev",
+      "role_name": "lambda-rds-start-stop-dev"
+    },
+    {
+      "name": "start_rds",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-1:813270451170:function:lambda-rds-start-stop-dev-start_rds"
+    },
+    {
+      "name": "start_rds-event",
+      "resource_type": "cloudwatch_event",
+      "rule_name": "lambda-rds-start-stop-dev-start_rds-event"
+    },
+    {
+      "name": "stop_rds",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-1:813270451170:function:lambda-rds-start-stop-dev-stop_rds"
+    },
+    {
+      "name": "stop_rds-event",
+      "resource_type": "cloudwatch_event",
+      "rule_name": "lambda-rds-start-stop-dev-stop_rds-event"
+    }
+  ],
+  "schema_version": "2.0",
+  "backend": "api"
+}
