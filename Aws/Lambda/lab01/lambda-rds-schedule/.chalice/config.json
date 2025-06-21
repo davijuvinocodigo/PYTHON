@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "app_name": "lambda-rds-start-stop",
+  "app_name": "lambda-rds-schedule",
   "stages": {
     "dev": {
       "iam_policy_file": "policy.json",

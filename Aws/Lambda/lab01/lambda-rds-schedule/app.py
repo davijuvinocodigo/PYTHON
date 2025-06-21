@@ -1,7 +1,8 @@
 import boto3
 from chalice import Chalice, Cron
 
-app = Chalice(app_name='lambda-rds-start-stop')
+app = Chalice(app_name='lambda-rds-schedule')
+
 app.debug = True  # Remova em produção
 
 # Configurações (melhor usar variáveis de ambiente)
@@ -38,3 +39,4 @@ def stop_rds(event):
     except Exception as e:
         app.log.error(f"Erro ao parar RDS: {str(e)}")
         raise   
+
