@@ -2,5 +2,10 @@
     "python.analysis.extraPaths": [
         "./chalice-lambdas/lambda_functions",
         "./lambda-rest-chalice/lambda_functions"
-    ]
+    ],
+    "python.testing.pytestArgs": [
+        "s3-to-rds-v2"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

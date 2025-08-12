@@ -1,0 +1,19 @@
+{
+  "version": "2.0",
+  "app_name": "s3-to-rds-v2",
+  "stages": {
+    "dev": {
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "DB_HOST": "rdsinframysqldefinitivo.cc1uw02m0ewj.us-east-1.rds.amazonaws.com",
+        "DB_USER": "admin",
+        "DB_PASSWORD": "12345678",
+        "DB_SCHEMA": "rdsinframysqldefinitivo"
+      },
+      "iam_policy_file": "policy.json",
+      "lambda_timeout": 15,
+      "lambda_memory_size": 256
+      
+    }
+  }
+}

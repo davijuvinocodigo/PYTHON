@@ -1,0 +1,23 @@
+{
+  "resources": [
+    {
+      "name": "default-role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::813270451170:role/s3-csv-to-rds-dev",
+      "role_name": "s3-csv-to-rds-dev"
+    },
+    {
+      "name": "handle_s3_event",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-1:813270451170:function:s3-csv-to-rds-dev-handle_s3_event"
+    },
+    {
+      "name": "handle_s3_event-s3event",
+      "resource_type": "s3_event",
+      "bucket": "dev-bucket-lab01",
+      "lambda_arn": "arn:aws:lambda:us-east-1:813270451170:function:s3-csv-to-rds-dev-handle_s3_event"
+    }
+  ],
+  "schema_version": "2.0",
+  "backend": "api"
+}
