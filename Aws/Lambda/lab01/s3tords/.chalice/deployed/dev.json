@@ -1,0 +1,17 @@
+{
+  "resources": [
+    {
+      "name": "default-role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::813270451170:role/s3ToRds-dev",
+      "role_name": "s3tords-dev"
+    },
+    {
+      "name": "call_function",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-1:813270451170:function:s3tords-dev-call_function"
+    }
+  ],
+  "schema_version": "2.0",
+  "backend": "api"
+}

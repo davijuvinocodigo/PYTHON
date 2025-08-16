@@ -1,4 +1,0 @@
-chalice
-pytest
-boto3>=1.26.0
-pymysql

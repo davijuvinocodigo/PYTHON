@@ -1,0 +1,6 @@
+boto3
+pytest
+pytest-cov
+moto
+PyMySQL
+chalice
