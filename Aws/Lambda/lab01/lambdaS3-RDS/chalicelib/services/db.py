@@ -1,6 +1,7 @@
 from chalicelib.core.exceptions import ErroBancoDados
 from chalicelib.core.logger import log
 from typing import List
+import pymysql
 
 class GerenciadorBanco:
     """Classe base genérica para operações de banco de dados"""
@@ -19,7 +20,6 @@ class GerenciadorMySQL(GerenciadorBanco):
     def conectar(self):
         """Implementação específica para MySQL"""
         try:
-            import pymysql
             return pymysql.connect(
                 host=self.config.host,
                 user=self.config.user,
